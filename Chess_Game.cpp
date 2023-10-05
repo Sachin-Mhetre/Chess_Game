@@ -92,7 +92,7 @@ public:
     }
 
     bool isValidMove(int fromRow, int fromCol, int toRow, int toCol) {
-        if (fromRow < 1 || fromRow > 8 || fromCol < 1 || fromCol > 8 ||
+        if (fromRow < 0 || fromRow > 8 || fromCol < 1 || fromCol > 8 ||
             toRow < 1 || toRow > 8 || toCol < 1 || toCol > 8) {
             return false; // Check if coordinates are within bounds
         }
