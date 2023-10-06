@@ -100,10 +100,15 @@ public:
         char piece = board[fromRow][fromCol];
         char targetPiece = board[toRow][toCol];
 
-        // Implement specific piece movement rules based on 'piece' and 'targetPiece'
         if ((piece == 'P' || piece == 'p') && isValidPawnMove(fromRow, fromCol, toRow, toCol)) {
             return true;
         } else if ((piece == 'N' || piece == 'n') && isValidKnightMove(fromRow, fromCol, toRow, toCol)) {
+            return true;
+        }
+        else if((piece == 'R' || piece == 'r') && isValidRookMove(fromRow, fromCol, toRow, toCol)){
+            return true;
+        }
+        else if((piece == 'B' || piece == 'b') && isValidBishopMove(fromRow, fromCol, toRow, toCol)){
             return true;
         }
         // Add cases for other pieces as needed
@@ -137,11 +142,60 @@ public:
         return false;
     }
 
-    bool isValidKnightMove(int fromRow, int fromCol, int toRow, int toCol) {
+    bool isValidKnightMove(int fromRow, int fromCol, int toRow, int toCol){
         int dx = abs(toCol - fromCol);
         int dy = abs(toRow - fromRow);
-
-        return (dx == 1 && dy == 2) || (dx == 2 && dy == 1);
+        if(board[fromRow][fromCol] == 'K'){
+            if ((dx == 1 && dy == 2) || (dx == 2 && dy == 1) && board[toRow][toCol] == '#' ) {
+             return true;
+            }else if((dx == 1 && dy == 2) || (dx == 2 && dy == 1) && islower(board[toRow][toCol])) {
+            return true;
+            }//these code check that attacking knight is larger(white)
+        }
+        else if (board[fromRow][fromCol] == 'k'){
+            if ((dx == 1 && dy == 2) || (dx == 2 && dy == 1) && board[toRow][toCol] == '#' ) {
+             return true;
+            }
+            else if((dx == 1 && dy == 2) || (dx == 2 && dy == 1) && isupper(board[toRow][toCol])) {
+            return true; //these code check that attacking knight is smaller(black)
+            }
+        }
+        return false;
+    }
+    
+    bool isValidRookMove(int fromRow, int fromCol, int toRow, int toCol){
+        if(board[fromRow][fromCol] == 'K'){
+            if((fromCol == toCol) || (fromRow == toRow) && board[toRow][toCol] == '#'){
+                return true;
+            }else if((fromCol == toCol) || (fromRow == toRow) && islower(board[toRow][toCol])) {
+            return true;  //these code check that attacking knight is larger(white)
+            }
+        }else if (board[fromRow][fromCol] == 'k'){
+            if((fromCol == toCol) || (fromRow == toRow) && board[toRow][toCol] == '#'){
+                return true;
+            }
+            else if((fromCol == toCol) || (fromRow == toRow) && isupper(board[toRow][toCol])) {
+            return true; //these code check that attacking knight is smaller(black)
+            }
+        }
+            return false;
+    }
+    
+    bool isValidBishopMove(int fromRow, int fromCol, int toRow, int toCol){
+        int dx = abs(toCol - fromCol);
+        int dy = abs(toRow - fromRow);
+        char piece = board[fromRow][fromCol];
+        char targetPiece = board[toRow][toCol];
+        if(board[fromRow][fromCol] == 'B'){
+            if(((dy == 1) || (dy==2) || (dy==3) || (dy==4) || (dy==5)) && targetPiece != '#' && islower(piece) && isupper(targetPiece)){
+            return true;  //these code check that attacking knight is larger(white)
+            }
+        }else if(board[fromRow][fromCol] == 'b'){
+           if(((dy == 1) || (dy==2) || (dy==3) || (dy==4) || (dy==5)) && targetPiece != '#' && islower(targetPiece) && isupper(piece)){
+            return true; //these code check that attacking knight is smaller(black)
+            }
+        }
+            return false;
     }
 };
 
