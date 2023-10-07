@@ -26,7 +26,7 @@ Welcome to my Chess Program! This is a simple command-line chess game implemente
 
 ### Installation
 1. Clone this repository to your local machine:
-   git clone https://github.com/Sachin-Mhetre/chess-program.git
+   git clone : [(https://github.com/Sachin-Mhetre/Chess_Game/blob/main/Chess_Game.cpp)]
 
 ## Usage
 - Start the program, and you'll see the chessboard displayed in the console.
