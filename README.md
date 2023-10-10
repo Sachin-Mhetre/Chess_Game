@@ -10,7 +10,7 @@ Welcome to my Chess Program! This is a simple command-line chess game implemente
 - [Usage](#usage)
 - [How to Play](#how-to-play)
 - [Game Rules](#game-rules)
-- [License](#license)
+
 
 ## Features
 - Simple and clean command-line interface.
@@ -43,5 +43,3 @@ Welcome to my Chess Program! This is a simple command-line chess game implemente
 - The game detects checkmate and stalemate conditions.
 - If a player's king is in checkmate, the game ends, and the opponent wins.
    
-## License
-- This project is licensed under the MIT License - see the LICENSE file for details.
